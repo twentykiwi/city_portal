@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">city_portal</string>
+    <string name="name_err">Invalid name</string>
+    <string name="mobile_err">Invalid mobile no.</string>
+    <string name="username_err">Invalid username</string>
+    <string name="password_err">Invalid password</string>
+    <string name="confirm_password_err">Passwords do not match</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
