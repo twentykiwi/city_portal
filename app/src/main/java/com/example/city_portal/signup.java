@@ -29,6 +29,7 @@ public class signup extends AppCompatActivity {
     private EditText name,phoneno,username,password,confirmPass;
     private Button btn_register;
     AwesomeValidation awesomeValidation;
+    DatabaseHelper myDb;
 
 
     @Override
@@ -37,6 +38,7 @@ public class signup extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+        myDb = new DatabaseHelper(this);
 
         updateUI();
 
@@ -65,7 +67,16 @@ public class signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(awesomeValidation.validate()){
-                    Toast.makeText(signup.this,"Data Received Successfully",Toast.LENGTH_SHORT).show();
+                    boolean isInserted =  myDb.insertData(
+                            name.getText().toString(),
+                            phoneno.getText().toString(),
+                            username.getText().toString(),
+                            password.getText().toString()
+                    );
+                    if(isInserted = true)
+                        Toast.makeText(signup.this,"New Member Signup Successful",Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(signup.this,"Technical Error: Please try later",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(signup.this,"Error",Toast.LENGTH_SHORT).show();
