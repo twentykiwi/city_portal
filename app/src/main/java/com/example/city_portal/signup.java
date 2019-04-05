@@ -58,7 +58,7 @@ public class signup extends AppCompatActivity {
 
         awesomeValidation.addValidation(signup.this, R.id.name, "[a-zA-Z\\s]+", R.string.name_err);
         awesomeValidation.addValidation(signup.this, R.id.phoneno, RegexTemplate.TELEPHONE, R.string.mobile_err);
-        awesomeValidation.addValidation(signup.this, R.id.username, "[A-Za-z0-9_]+", R.string.name_err);
+        awesomeValidation.addValidation(signup.this, R.id.username, "[A-Za-z0-9_]+", R.string.username_err);
         awesomeValidation.addValidation(signup.this, R.id.password, regexPassword, R.string.password_err);
         awesomeValidation.addValidation(signup.this, R.id.confirm_password, R.id.password, R.string.confirm_password_err);
 

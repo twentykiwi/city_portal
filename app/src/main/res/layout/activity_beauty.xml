@@ -18,10 +18,12 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_beauty"
         app:menu="@menu/activity_beauty_drawer" />
-    <TextView
+
+    <ListView
+        android:id="@+id/beautyListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="beauty"
-        android:background="@drawable/cpsplash"
-        />
+        android:layout_height="match_parent">
+
+    </ListView>
+
 </android.support.v4.widget.DrawerLayout>

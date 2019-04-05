@@ -8,10 +8,6 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <include
-        layout="@layout/app_bar_hospital"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -21,5 +17,12 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_hospital"
         app:menu="@menu/activity_hospital2_drawer" />
+
+    <ListView
+        android:id="@+id/hospitalListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
 
 </android.support.v4.widget.DrawerLayout>

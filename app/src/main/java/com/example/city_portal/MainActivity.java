@@ -64,6 +64,10 @@ public class MainActivity extends AppCompatActivity
         Intent i=new Intent(MainActivity.this,hospital.class);
         startActivity(i);
     }
+    public void restaurant(View view){
+        Intent i=new Intent(MainActivity.this,restaurant.class);
+        startActivity(i);
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -67,4 +67,25 @@ public class DatabaseAccess {
         cursor.close();
         return list;
     }
+
+    public  Cursor getBeautyData(){
+        Cursor cursor = database.rawQuery("SELECT * FROM beauty", null);
+        return cursor;
+    }
+    public  Cursor getEducationData(){
+        Cursor cursor = database.rawQuery("SELECT * FROM education", null);
+        return cursor;
+    }
+    public  Cursor getHospitalData(){
+        Cursor cursor = database.rawQuery("SELECT * FROM health", null);
+        return cursor;
+    }
+    public  Cursor getRestaurantData(){
+        Cursor cursor = database.rawQuery("SELECT * FROM restraunt", null);
+        return cursor;
+    }
+    public Cursor getSelectedBeautyData(int id){
+        Cursor cursor = database.rawQuery("SELECT * FROM beauty WHERE ID = "+id, null);
+        return cursor;
+    }
 }
