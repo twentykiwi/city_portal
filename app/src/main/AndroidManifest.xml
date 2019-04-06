@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".VisitActivity"></activity>
+        <activity android:name=".VisitRestaurantActivity"></activity>
+        <activity android:name=".VisitHospitalActivity" />
+        <activity android:name=".VisitEducationActivity" />
+        <activity android:name=".VisitActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".signup" />
         <activity android:name=".login" />

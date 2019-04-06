@@ -1,8 +1,11 @@
 package com.example.city_portal;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -27,13 +30,13 @@ public class hospital extends AppCompatActivity {
         databaseAccess.open();
         viewData();
 
-         /*
-        beautyListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+        hospitalListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(beauty.this, .class);
+                Intent i = new Intent(hospital.this, VisitHospitalActivity.class);
 
                 //Create the bundle
                 Bundle bundle = new Bundle();
@@ -48,7 +51,7 @@ public class hospital extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        */
+
     }
 
     private void viewData() {
