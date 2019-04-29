@@ -46,11 +46,16 @@
         android:id="@+id/item_tables"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address"
+        android:text="Tables"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:layout_margin="8dp"
-        android:visibility="invisible"/>
+        android:layout_margin="8dp"/>
+
+    <Button
+        android:id="@+id/bookBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book Table" />
 
 
 </LinearLayout>

@@ -42,5 +42,11 @@
         android:textStyle="bold"
         android:layout_margin="8dp" />
 
+    <Button
+        android:id="@+id/appBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book an Appointment" />
+
 
 </LinearLayout>

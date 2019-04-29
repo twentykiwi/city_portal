@@ -56,17 +56,17 @@ public class signup extends AppCompatActivity {
         // to validate the confirmation of another field
         String regexPassword = "(?=.*[a-z])(?=.*[A-Z])(?=.*[\\d])(?=.*[~`!@#\\$%\\^&\\*\\(\\)\\-_\\+=\\{\\}\\[\\]\\|\\;:\"<>,./\\?]).{8,}";
 
-        awesomeValidation.addValidation(signup.this, R.id.name, "[a-zA-Z\\s]+", R.string.name_err);
+        awesomeValidation.addValidation(signup.this, R.id.name, "[a-zA-Z\\s]+" , R.string.name_err);
         awesomeValidation.addValidation(signup.this, R.id.phoneno, RegexTemplate.TELEPHONE, R.string.mobile_err);
-        awesomeValidation.addValidation(signup.this, R.id.username, "[A-Za-z0-9_]+", R.string.username_err);
-        awesomeValidation.addValidation(signup.this, R.id.password, regexPassword, R.string.password_err);
+        awesomeValidation.addValidation(signup.this, R.id.username, "[A-Za-z\\s]+", R.string.username_err);
+        awesomeValidation.addValidation(signup.this, R.id.password, " ^[a-zA-Z0-9]$", R.string.password_err);
         awesomeValidation.addValidation(signup.this, R.id.confirm_password, R.id.password, R.string.confirm_password_err);
 
         btn_register.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                if(awesomeValidation.validate()){
+                if(!awesomeValidation.validate()){
                     boolean isInserted =  myDb.insertData(
                             name.getText().toString(),
                             phoneno.getText().toString(),
