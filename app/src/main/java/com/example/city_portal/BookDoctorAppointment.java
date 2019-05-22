@@ -107,7 +107,7 @@ public class BookDoctorAppointment extends AppCompatActivity implements View.OnC
         name.setText(cursor2.getString(1));
         service.setText(cursor1.getString(1));
         title = name.getText().toString();
-        sub_title = service.getText().toString();
+        sub_title = "VISIT";
         databaseAccess.close();
     }
 
