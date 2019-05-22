@@ -16,6 +16,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "MOBILE_NO";
     public static final String COL_4 = "USERNAME";
     public static final String COL_5 = "PASSWORD";
+    public static final String COL_12 = "TITLE";
+    public static final String COL_13 = "SUB_TITLE";
+    public static final String COL_14 = "DATE";
+    public static final String COL_15 = "TIME";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 2);
@@ -52,10 +56,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean insertReceiptData(String title, String sub_title, String date, String time){
         SQLiteDatabase db  = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2,title);
-        contentValues.put(COL_3,sub_title);
-        contentValues.put(COL_4,date);
-        contentValues.put(COL_5,time);
+        contentValues.put(COL_12,title);
+        contentValues.put(COL_13,sub_title);
+        contentValues.put(COL_14,date);
+        contentValues.put(COL_15,time);
         long result = db.insert(TABLE_NAME2,null,contentValues);
         if(result == -1)
             return false;

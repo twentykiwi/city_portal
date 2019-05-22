@@ -1,6 +1,7 @@
 package com.example.city_portal;
 
 import android.app.DownloadManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -74,9 +75,11 @@ public class signup extends AppCompatActivity {
                             username.getText().toString(),
                             password.getText().toString()
                     );
-                    if(isInserted = true)
-                        Toast.makeText(signup.this,"New Member Signup Successful",Toast.LENGTH_SHORT).show();
-                    else
+                    if(isInserted = true) {
+                        Toast.makeText(signup.this, "New Member Signup Successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(signup.this,login.class);
+                        startActivity(intent);
+                    }else
                         Toast.makeText(signup.this,"Technical Error: Please try later",Toast.LENGTH_SHORT).show();
                 }
                 else{
