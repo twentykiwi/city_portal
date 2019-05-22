@@ -84,6 +84,14 @@ public class DatabaseAccess {
         Cursor cursor = database.rawQuery("SELECT * FROM restraunt", null);
         return cursor;
     }
+    public Cursor getSelectedHospitalDoctorsData(int id){
+        Cursor cursor = database.rawQuery("SELECT * FROM doctor_table WHERE ref_id = "+id, null);
+        return cursor;
+    }
+    public Cursor getSelectedBeautyServicesData(int id){
+        Cursor cursor = database.rawQuery("SELECT * FROM restraunt WHERE ref_id = "+id, null);
+        return cursor;
+    }
     public Cursor getSelectedBeautyData(int id){
         Cursor cursor = database.rawQuery("SELECT * FROM beauty WHERE ID = "+id, null);
         return cursor;

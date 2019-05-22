@@ -54,9 +54,19 @@ public class VisitHospitalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(nameSP != null){
 
-                    String time = getCurrentTime();
-                    Toast.makeText(VisitHospitalActivity.this,"Your appointment is booked at "+time,Toast.LENGTH_SHORT).show();
-                    Intent doThis = new Intent(VisitHospitalActivity.this,MainActivity.class);
+                    //String time = getCurrentTime();
+                    //Toast.makeText(VisitHospitalActivity.this,"Your appointment is booked at "+time,Toast.LENGTH_SHORT).show();
+                    Intent doThis = new Intent(VisitHospitalActivity.this, Doctors.class);
+                    //Create the bundle
+                    Bundle bundle = new Bundle();
+
+                    //Add your data to bundle
+                    bundle.putInt("stuff",value+1);
+
+                    //Add the bundle to the intent
+                    doThis.putExtras(bundle);
+
+                    //Fire that second activity
                     startActivity(doThis);
 
                 }else {

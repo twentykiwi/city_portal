@@ -157,6 +157,14 @@
             android:id="@+id/login"
             android:onClick="login1"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="BOOKED STATEMENT"
+            android:id="@+id/booked_statement"
+            android:onClick="login1"/>
+
     </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>
