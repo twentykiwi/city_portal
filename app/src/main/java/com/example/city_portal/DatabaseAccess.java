@@ -84,12 +84,24 @@ public class DatabaseAccess {
         Cursor cursor = database.rawQuery("SELECT * FROM restraunt", null);
         return cursor;
     }
+    public  Cursor getReceiptData(){
+        Cursor cursor = database.rawQuery("SELECT * FROM receipt", null);
+        return cursor;
+    }
     public Cursor getSelectedHospitalDoctorsData(int id){
         Cursor cursor = database.rawQuery("SELECT * FROM doctor_table WHERE ref_id = "+id, null);
         return cursor;
     }
     public Cursor getSelectedBeautyServicesData(int id){
-        Cursor cursor = database.rawQuery("SELECT * FROM restraunt WHERE ref_id = "+id, null);
+        Cursor cursor = database.rawQuery("SELECT * FROM professional_table WHERE ref_id = "+id, null);
+        return cursor;
+    }
+    public Cursor getSelectedDoctorsData(int id){
+        Cursor cursor = database.rawQuery("SELECT * FROM doctor_table WHERE id = "+id, null);
+        return cursor;
+    }
+    public Cursor getSelectedServicesData(int id){
+        Cursor cursor = database.rawQuery("SELECT * FROM professional_table WHERE id = "+id, null);
         return cursor;
     }
     public Cursor getSelectedBeautyData(int id){

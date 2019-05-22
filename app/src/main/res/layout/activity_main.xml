@@ -162,8 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="BOOKED STATEMENT"
-            android:id="@+id/booked_statement"
-            android:onClick="login1"/>
+            android:id="@+id/booked_statement"/>
 
     </LinearLayout>
 

@@ -13,45 +13,45 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Doctors extends AppCompatActivity {
+public class Beautician extends AppCompatActivity {
 
-    ListView doctorListView;
+    ListView beauticianListView;
     ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String, String>>();
     private SimpleAdapter sa;
     DatabaseAccess databaseAccess;
     HashMap<String,String> item;     //Used to link data to lines
     int value;
-    int ids[] = new int[10];
+    int ids[] = new int[20];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctors);
+        setContentView(R.layout.activity_beautician);
 
         //Get the bundle
         Bundle bundle = getIntent().getExtras();
         //Extract the data…
         value = bundle.getInt("stuff");
 
-        doctorListView = findViewById(R.id.doctors);
+        beauticianListView = findViewById(R.id.beautician);
         databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
         viewData();
 
 
-        doctorListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        beauticianListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(Doctors.this, BookDoctorAppointment.class);
+                Intent i = new Intent(Beautician.this, BookBeautyAppointment.class);
 
                 //Create the bundle
                 Bundle bundle = new Bundle();
 
                 //Add your data to bundle
                 bundle.putInt("stuff", ids[position]);
-                bundle.putInt("stff", value);
+                bundle.putInt("stff",value);
 
                 //Add the bundle to the intent
                 i.putExtras(bundle);
@@ -62,10 +62,9 @@ public class Doctors extends AppCompatActivity {
         });
     }
 
-
     private void viewData() {
         int i = 0;
-        Cursor cursor = databaseAccess.getSelectedHospitalDoctorsData(value);
+        Cursor cursor = databaseAccess.getSelectedBeautyServicesData(value);
         if (cursor.getCount() == 0) {
             Toast.makeText(getBaseContext(), "0 Data", Toast.LENGTH_SHORT).show();
         } else {
@@ -73,11 +72,11 @@ public class Doctors extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 this.item = new HashMap<String, String>();
                 item.put("line1", cursor.getString(1));
-                item.put("line2", cursor.getString(2));
+                item.put("line2","\u20B9 "+ cursor.getString(2));
                 list.add(item);
                 sa = new SimpleAdapter(this, list, R.layout.two_line, new String[]{"line1", "line2"},
                         new int[]{R.id.nameEdit, R.id.rateEdit});
-                doctorListView.setAdapter(sa);
+                beauticianListView.setAdapter(sa);
                 ids[i] = cursor.getInt(0);
                 i++;
 

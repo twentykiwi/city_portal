@@ -54,8 +54,15 @@ public class VisitActivity extends AppCompatActivity {
                 if(nameSP != null){
 
                     String time = getCurrentTime();
-                    Toast.makeText(VisitActivity.this,"Your appointment is booked at "+time,Toast.LENGTH_SHORT).show();
-                    Intent doThis = new Intent(VisitActivity.this,MainActivity.class);
+                    Intent doThis = new Intent(VisitActivity.this,Beautician.class);
+                    //Create the bundle
+                    Bundle bundle = new Bundle();
+
+                    //Add your data to bundle
+                    bundle.putInt("stuff",value+1);
+
+                    //Add the bundle to the intent
+                    doThis.putExtras(bundle);
                     startActivity(doThis);
 
                 }else {

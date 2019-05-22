@@ -9,7 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "cityportal.db";
-    public static final String TABLE_NAME = "login_table";
+    public static final String TABLE_NAME = "loginn_table";
+    public static final String TABLE_NAME2 = "receipt_table";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "NAME";
     public static final String COL_3 = "MOBILE_NO";
@@ -17,13 +18,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_5 = "PASSWORD";
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
         SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, MOBILE_NO TEXT, USERNAME TEXT, PASSWORD TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME2 + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT, SUB_TITLE TEXT, DATE TEXT, TIME TEXT)");
     }
 
     @Override
@@ -47,6 +49,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    public boolean insertReceiptData(String title, String sub_title, String date, String time){
+        SQLiteDatabase db  = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2,title);
+        contentValues.put(COL_3,sub_title);
+        contentValues.put(COL_4,date);
+        contentValues.put(COL_5,time);
+        long result = db.insert(TABLE_NAME2,null,contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
     public boolean loginCheck(String username, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE USERNAME = '"+username+"' AND PASSWORD = '"+password+"'",null);
@@ -59,6 +75,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM "+TABLE_NAME,null);
+        return res;
+    }
+
+    public Cursor getReceiptAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM "+TABLE_NAME2,null);
         return res;
     }
 
