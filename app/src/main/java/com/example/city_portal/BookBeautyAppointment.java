@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,21 +49,32 @@ public class BookBeautyAppointment extends AppCompatActivity implements View.OnC
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (date.getText().toString().trim().length() > 0){
-                    boolean isInserted =  myDb.insertReceiptData(
-                            title,
-                            sub_title,
-                            dates,
-                            time
-                    );
+                SharedPreferences prefs = getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE);
+                final String nameSP = prefs.getString("name", null);
 
-                    if(isInserted = true)
-                        Toast.makeText(BookBeautyAppointment.this,"Appoinment is successfully booked",Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(BookBeautyAppointment.this,"Technical Error: Please try later",Toast.LENGTH_SHORT).show();
+                if(nameSP != null) {
+
+                    if (date.getText().toString().trim().length() > 0) {
+                        boolean isInserted = myDb.insertReceiptData(
+                                title,
+                                sub_title,
+                                dates,
+                                time,
+                                nameSP
+                        );
+
+                        if (isInserted = true) {
+                            Toast.makeText(BookBeautyAppointment.this, "Appoinment is successfully booked", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(BookBeautyAppointment.this, MainActivity.class);
+                            startActivity(intent);
+                        } else
+                            Toast.makeText(BookBeautyAppointment.this, "Technical Error: Please try later", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(BookBeautyAppointment.this, "Please enter date!", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent doThis = new Intent(BookBeautyAppointment.this, login.class);
+                    startActivity(doThis);
                 }
-                else
-                    Toast.makeText(BookBeautyAppointment.this,"Please enter date!",Toast.LENGTH_SHORT).show();
             }
         });
 

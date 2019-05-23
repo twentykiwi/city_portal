@@ -20,21 +20,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_13 = "SUB_TITLE";
     public static final String COL_14 = "DATE";
     public static final String COL_15 = "TIME";
+    public static final String COL_16 = "NAME";
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 2);
+        super(context, DATABASE_NAME, null, 3);
         SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, MOBILE_NO TEXT, USERNAME TEXT, PASSWORD TEXT)");
-        db.execSQL("CREATE TABLE " + TABLE_NAME2 + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT, SUB_TITLE TEXT, DATE TEXT, TIME TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME2 + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT, SUB_TITLE TEXT, DATE TEXT, TIME TEXT, NAME TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //db.execSQL("DROP TABLE IF EXISTS"+ TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME2);
         onCreate(db);
 
     }
@@ -53,13 +55,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public boolean insertReceiptData(String title, String sub_title, String date, String time){
+    public boolean insertReceiptData(String title, String sub_title, String date, String time, String appName){
         SQLiteDatabase db  = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_12,title);
         contentValues.put(COL_13,sub_title);
         contentValues.put(COL_14,date);
         contentValues.put(COL_15,time);
+        contentValues.put(COL_16,appName);
         long result = db.insert(TABLE_NAME2,null,contentValues);
         if(result == -1)
             return false;

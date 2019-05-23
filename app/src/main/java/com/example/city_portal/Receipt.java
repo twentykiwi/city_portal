@@ -50,7 +50,7 @@ public class Receipt extends AppCompatActivity {
                 this.item = new HashMap<String, String>();
                 item.put("line1","TOKEN NO: N"+randToken());
                 item.put("line2",cursor.getString(1));
-                item.put("line3",appName);
+                item.put("line3",cursor.getString(5));
                 item.put("line4",cursor.getString(3)+" "+cursor.getString(4));
                 item.put("line5",""+randAppointmentNo());
                 item.put("line6",cursor.getString(2));
