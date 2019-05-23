@@ -51,6 +51,16 @@
         android:textStyle="bold"
         android:layout_margin="8dp"/>
 
+    <EditText
+        android:id="@+id/bookDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        android:editable="false"
+        android:focusable="false"
+        android:hint="Choose date.."/>
+
     <Button
         android:id="@+id/bookBtn"
         android:layout_width="wrap_content"
